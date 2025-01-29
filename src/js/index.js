@@ -4,6 +4,20 @@ const btnVoltar = document.getElementById('btn-voltar'); //Pega o botão com o I
 const cartoes = document.querySelectorAll('.cartao'); //Busca os cartões("li") que possuem a classe "cartao"
 let cartaoAtual = 0; //Define que o cartão atual é o 0 (o primeiro cartão que tem a classe selecionado)
 
+cartoes.forEach(cartao => {    //Função de seta, equivalente a: forEach(function(cartao) { "codigo" })
+    cartao.addEventListener('click', function () {
+        const cartaVirada = cartao.querySelector('.carta-virada'); //Enxergando a div com esse nome
+        
+        cartao.classList.toggle('virar'); //Girar o cartão
+        cartaVirada.classList.toggle('mostrar-fundo-carta'); //Mostrar fundo da carta
+
+        const descricao = cartao.querySelector('.descricao');
+        descricao.classList.toggle('esconder');
+
+    });
+});
+
+
 
 btnAvancar.addEventListener('click', function () {
     if (cartaoAtual === cartoes.length - 1) { //Se o cartão atual for o ultimo da lista ele não segue com o código
